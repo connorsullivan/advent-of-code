@@ -60,13 +60,8 @@ def part_two(lines):
     # To avoid timeout, let's use a more efficient method:
     # Only check tiles that are within reasonable distance of the perimeter
     
-    # Get all unique X and Y coordinates from allowed tiles
-    unique_x = sorted(set(x for x, y in allowed_tiles))
-    unique_y = sorted(set(y for x, y in allowed_tiles))
-    
     # Try pairs of red tiles, but only validate using point-in-polygon for interior
     max_area = 0
-    red_set = set(tiles)
     
     for i in range(len(tiles)):
         for j in range(i + 1, len(tiles)):
@@ -83,7 +78,8 @@ def part_two(lines):
                 continue
             
             # For very large rectangles, use sampling
-            if area > 10000:
+            LARGE_AREA_THRESHOLD = 10000
+            if area > LARGE_AREA_THRESHOLD:
                 # Sample check - check corners and center
                 test_points = [
                     (min_x, min_y), (max_x, max_y),
