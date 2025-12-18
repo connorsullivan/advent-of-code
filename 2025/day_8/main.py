@@ -6,6 +6,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 from utils.file_reader import read_input
 
+TOP_CONNECTIONS = 1000
+
 def part_one(lines):
     points = [tuple(map(int, line.split(","))) for line in lines]
     n = len(points)
@@ -37,7 +39,7 @@ def part_one(lines):
         size[ra] += size[rb]
         return True
 
-    for idx, (_, a, b) in enumerate(edges[:1000]):
+    for idx, (_, a, b) in enumerate(edges[:TOP_CONNECTIONS]):
         union(a, b)
 
     comp_sizes = {}

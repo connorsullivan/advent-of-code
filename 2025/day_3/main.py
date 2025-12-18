@@ -6,6 +6,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 from utils.file_reader import read_input
 
+P2_LENGTH = 12
+
 def part_one(lines):
     total = 0
     for line in lines:
@@ -24,7 +26,7 @@ def part_one(lines):
     return total
 
 def part_two(lines):
-    k = 12
+    k = P2_LENGTH
     total = 0
     for line in lines:
         digits = [int(ch) for ch in line.strip()]
